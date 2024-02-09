@@ -20,12 +20,10 @@ app.post('/polls', async (req, res) => {
         }
     })
 
-
-
-    return poll
+    return res.status(201).send({pollId:poll.id})
 })
 
-
-app.listen({port:3333}).then(() => {
-    console.log('running')
+const port = 3333
+app.listen({port:port}).then(() => {
+    console.log('running on port ' + port)
 })
