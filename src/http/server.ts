@@ -1,11 +1,31 @@
 import fastify from 'fastify'
+import {PrismaClient} from '@prisma/client'
 
+import {z} from 'zod'
 
 const app = fastify()
+const prisma = new PrismaClient()
 
-app.get('/hello', (req:any, res:any) => {
-    res.send('<h1>oi</h1>')
+
+app.post('/polls', async (req, res) => {
+    const createPollBody = z.object({
+        title:z.string()
+    })
+
+    const {title} =  createPollBody.parse(req.body)
+
+    const poll = await prisma.poll.create({
+        data:{
+            title,
+        }
+    })
+
+
+
+    return poll
 })
+
+
 app.listen({port:3333}).then(() => {
     console.log('running')
 })
