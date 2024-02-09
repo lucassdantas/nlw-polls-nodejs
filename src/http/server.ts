@@ -1,5 +1,4 @@
 import fastify from 'fastify'
-import { prisma } from '../lib/prisma'
 import { createPoll } from './routes/create-polls'
 import { getPoll } from './routes/get-poll'
 import { voteOnPoll } from './routes/vote-on-poll'
