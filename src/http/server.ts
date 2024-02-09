@@ -1,6 +1,6 @@
 import fastify from 'fastify'
 import { prisma } from '../lib/prisma'
-import { createPoll } from './routes/crate-poll'
+import { createPoll } from './routes/create-polls'
 
 const app = fastify()
 
